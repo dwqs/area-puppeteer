@@ -49,7 +49,12 @@ async function getCitiesByPCode (page, pcode) {
     spinner1.text = chalk.blue(`正在抓取${provinces[parentCode]}的市级数据：${url}`);
 
     cities = await page.evaluate((parentCode, cities) => {
-        const list = [...document.querySelectorAll('.citytable .citytr')];
+        let list = [...document.querySelectorAll('.citytable .citytr')];
+
+        if (!list.length) {
+            // 修正海南省-儋州市的区域数据
+            list = [...document.querySelectorAll('.towntable .towntr')];
+        }
 
         if (!list.length) {
             console.log(`\n\n省份 ${provinces[parentCode]} 下没有市级数据\n\n`);
