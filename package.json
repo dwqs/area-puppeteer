@@ -1,0 +1,14 @@
+{
+    "name": "area-puppeteer",
+    "version": "0.0.1",
+    "dependencies": {
+        "async-await-error-handling": "^0.5.2",
+        "chalk": "^2.4.0",
+        "ora": "^2.0.0",
+        "puppeteer": "^1.3.0"
+    },
+    "description": "基于 puppeteer 的中国行政区域抓取爬虫(省市区)",
+    "scripts": {
+        "start": "node index.js"
+    }
+}
