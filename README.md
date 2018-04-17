@@ -11,6 +11,10 @@
 git clone git@github.com:dwqs/area-puppeteer.git
 npm i
 npm start
+npm run format // 格式化数据
 ```
+
+格式化后会生成两份数据：`pca-code.js` 和 `pcaa-code.js`，前者仅省市数据，后者包含省市区数据
+
 ## License
 This repo is released under the [WTFPL](http://www.wtfpl.net/) – Do What the Fuck You Want to Public License.
