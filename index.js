@@ -5,6 +5,8 @@ const chalk = require('chalk');
 const path = require('path');
 const fs = require('fs');
 
+const { timeout, writeFileSync } = require('./utils');
+
 const spinner1 = ora({
     color: 'yellow'
 });
@@ -37,23 +39,6 @@ Object.keys(provinces).forEach(code => {
         pcodes.push(code.slice(0, 2));
     }
 });
-
-function timeout (delay) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            try {
-                resolve(1)
-            } catch (e) {
-                reject(0)
-            }
-        }, delay)
-    });        
-}
-
-function writeFileSync (name, data) {
-    fs.writeFileSync(path.resolve(__dirname, name), `module.exports=${JSON.stringify(data)}`);
-}
-
 
 async function getCitiesByPCode (page, pcode) {
     url = target.replace('#{route}', pcode);
