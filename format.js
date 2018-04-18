@@ -26,6 +26,9 @@ const filter = ['市辖区', '县', '省直辖县级行政区划', '自治区直
 const pca = {
     '86': provinces['86']
 };
+// 删除港澳
+delete pca['86']['910000'];
+
 // 省市区
 const pcaa = {
     '86': provinces['86']
@@ -57,10 +60,14 @@ function formatPCAddress () {
             pca[pcode] = provinces['710100'];
         } else if (pcode === '910000') {
             // 港澳
-            const t = provinces[pcode];
-            Object.keys(t).forEach(item => {
-                pca[item] = provinces[item];
-            });
+            pca['86']['810000'] = '香港特别行政区';
+            pca['86']['820000'] = '澳门特别行政区';
+            pca['810000'] = provinces['810000'];
+            pca['820000'] = provinces['820000'];
+            // const t = provinces[pcode];
+            // Object.keys(t).forEach(item => {
+            //     pca[item] = provinces[item];
+            // });
         } else {
             const res = {};
             const pcities = cities.filter(city => city.parentCode === pcode);
