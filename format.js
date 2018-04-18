@@ -78,7 +78,7 @@ function formatPCAddress () {
             pca[pcode] = res;
         }
     });
-    writeFileSync('pca-code.js', pca);
+    writeFileSync('pca.js', pca);
 }
 
 // 因为部分原处于第三级的区域提升到第二级，所以要重新抓取这部分区域对应的下一级区域数据
@@ -184,7 +184,7 @@ async function formatPCAAddress () {
         }
     }
 
-    writeFileSync('pcaa-code.js', pcaa);
+    writeFileSync('pcaa.js', pcaa);
     await browser.close();
 }
 
