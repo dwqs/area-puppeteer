@@ -18,10 +18,10 @@ npm run format // 格式化数据
 
 生成的数据包含两份：`cities.js` 和 `areas.js`，前者是市级数据，后者是县区数据
 
-格式化后会生成两份数据：`pca-code.js` 和 `pcaa-code.js`，前者仅省市数据，后者包含省市区数据
+格式化后会生成两份数据：`pca.js` 和 `pcaa.js`，前者仅省市数据，后者包含省市区数据
 
 ```js
-import Data from 'path/to/pcaa-code';
+import Data from 'path/to/pcaa';
 
 Data['86']
 // 所有省份：{'110000': '北京市', '120000': '天津市', '130000': '河北省', ...}

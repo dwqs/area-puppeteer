@@ -1,8 +1,8 @@
 const expect = require('chai').expect;
 
 const provinces = require('../provinces');
-const pca = require('../pca-code');
-const pcaa = require('../pcaa-code');
+const pca = require('../pca');
+const pcaa = require('../pcaa');
 
 function findElem (arr, val) {
     const t = arr.filter(a => a === val);
