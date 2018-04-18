@@ -40,7 +40,11 @@ const spinner = ora({
 });
 
 
-function formatCode (code) {
+function formatCode (code, text = '') {
+    // 特殊处理东莞市和中山市的县区数据 code
+    if(text === '东莞市' || text === '中山市') {
+        return code.slice(0, -3);
+    }
     const index = reg.exec(code)['index'];
     return index > 6 ? code.slice(0, index) : code.slice(0, 6);
 }
@@ -170,7 +174,7 @@ async function formatPCAAddress () {
                     // 第三级数据
                     pareas.forEach(parea => {
                         if (parea.text !== '市辖区') {
-                            curAreas[formatCode(parea.code)] = parea.text.indexOf('办事处') > -1 ? parea.text.slice(0, -3) : parea.text;
+                            curAreas[formatCode(parea.code, pcity.text)] = parea.text.indexOf('办事处') > -1 ? parea.text.slice(0, -3) : parea.text;
                         }
                     });
                     pcaa[cityCode] = curAreas;
