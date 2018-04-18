@@ -10,7 +10,7 @@ const { timeout, writeFileSync } = require('./utils');
 
 const provinces = require('./provinces');
 const cities = require('./cities');
-const areas = require('./area');
+const areas = require('./areas');
 const pcodes = Object.keys(provinces['86']);
 
 /** 
@@ -27,7 +27,9 @@ const pca = {
     '86': provinces['86']
 };
 // 省市区
-const pcaa = {};
+const pcaa = {
+    '86': provinces['86']
+};
 
 // 提取行政区域 code
 const reg = /0(?=0{2,})/;
@@ -131,7 +133,6 @@ async function formatPCAAddress () {
             const pcities = cities.filter(city => city.parentCode === pcode);
             for(let c = 0, cl = pcities.length; c < cl; c++) {
                 const pcity = pcities[c];
-                const curAreas = {};
                 const pareas = areas.filter(area => area.parentCode === pcity.code);
 
                 if (f.includes(pcity.text)) {
@@ -162,6 +163,7 @@ async function formatPCAAddress () {
                         await timeout(1500);
                     }
                 } else {
+                    const curAreas = {};
                     const cityCode = formatCode(pcity.code);
                     res[cityCode] = pcity.text;
 
