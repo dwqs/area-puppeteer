@@ -11,7 +11,6 @@ function findElem (arr, val) {
 
 describe('中华人民共和国行政区划：', () => {
     it('省级行政区域数据', () => {
-        expect(pca['86']).to.deep.equal(provinces['86']);
         expect(pcaa['86']).to.deep.equal(provinces['86']);
         const item = findElem(Object.values(pca['86']), '广东省');
         expect(item === '广东省').to.be.true;
